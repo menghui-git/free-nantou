@@ -1,48 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>問答集</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>作品集</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50">
-  <div class="p-4">
-    <h1 class="text-3xl font-bold mb-6 text-center">問答集</h1>
+<body class="bg-gray-50 text-gray-800">
+
+  <div class="p-4 max-w-7xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center">作品集</h1>
     <div id="portfolio" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </div>
-  
-  <script>
-    async function fetchData() {
-      const res = await fetch("https://docs.google.com/spreadsheets/d/1OF5ScyvyV_7K5cSosMJombfvUSojOvJtmcL4gri429w/pub?output=csv");
-      const text = await res.text();
-      console.log("Raw CSV text:", text);
 
-      Papa.parse(text, {
-        header: true,
-        skipEmptyLines: true,
-        complete: function(results) {
-          console.log("Parsed result:", results.data);
-          const container = document.getElementById("portfolio");
-          results.data.forEach((item, index) => {
-            const card = document.createElement("div");
-            card.innerHTML = `
-              <div class="rounded-2xl shadow-md overflow-hidden bg-white">
-                <img src="${item.image}" alt="${item.title}" class="w-full h-48 object-cover" />
-              </div>
-              <div class="mt-2">
-                <h2 class="text-xl font-semibold mb-1">${item.title}</h2>
-                <p class="text-gray-600 text-sm">${item.description}</p>
-              </div>
-            `;
-            container.appendChild(card);
-          });
-        }
+  <!-- JSON 資料放這裡 -->
+  <script id="data-json" type="application/json">
+  [
+    {
+      "image": "https://picsum.photos/id/1015/600/400",
+      "title": "作品一",
+      "description": "這是作品一的描述。"
+    },
+    {
+      "image": "https://picsum.photos/id/1025/600/400",
+      "title": "作品二",
+      "description": "這是作品二的描述。"
+    },
+    {
+      "image": "https://picsum.photos/id/1035/600/400",
+      "title": "作品三",
+      "description": "這是作品三的描述。"
+    },
+    {
+      "image": "https://picsum.photos/id/1045/600/400",
+      "title": "作品四",
+      "description": "這是作品四的描述。"
+    }
+  ]
+  </script>
+
+  <script>
+    function renderPortfolio(items) {
+      const container = document.getElementById('portfolio');
+      container.innerHTML = ''; // 先清空容器
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.innerHTML = `
+          <div class="rounded-2xl shadow-md overflow-hidden bg-white">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
+          </div>
+          <div class="mt-2 px-2">
+            <h2 class="text-xl font-semibold mb-1">${item.title}</h2>
+            <p class="text-gray-600 text-sm">${item.description}</p>
+          </div>
+        `;
+        container.appendChild(card);
       });
     }
 
-    fetchData();
+    // 從 script#data-json 讀取 JSON 並渲染
+    const dataScript = document.getElementById('data-json');
+    const portfolioData = JSON.parse(dataScript.textContent);
+    renderPortfolio(portfolioData);
   </script>
+
 </body>
 </html>
