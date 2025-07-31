@@ -1,40 +1,83 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>作品集</title>
+  <title>作品集 - Sherbet 風格</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* 客製字體與配色 */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff9f7; /* Sherbet 淡暖色背景 */
+      color: #4b3a36; /* 深棕色字體 */
+    }
+    /* 卡片底色及陰影柔和 */
+    .card {
+      background-color: #fff;
+      border-radius: 1rem; /* 圓角更大 */
+      box-shadow: 0 4px 12px rgb(236 207 202 / 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgb(236 207 202 / 0.5);
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      letter-spacing: 0.025em;
+      margin-bottom: 1.5rem;
+      color: #b4603a; /* 溫暖橘色 */
+      text-align: center;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #8a5a44;
+      margin-bottom: 0.25rem;
+    }
+    p {
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #6f574b;
+    }
+    /* 卡片圖片圓角 */
+    img {
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+    }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-  <div class="p-4 max-w-7xl mx-auto">
-    <h1 class="text-3xl font-bold mb-6 text-center">作品集</h1>
-    <div id="portfolio" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-  </div>
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <h1>我的作品集</h1>
+    <section id="portfolio" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></section>
+  </main>
 
-  <!-- JSON 資料放這裡 -->
   <script id="data-json" type="application/json">
   [
     {
       "image": "https://picsum.photos/id/1015/600/400",
       "title": "作品一",
-      "description": "這是作品一的描述。"
+      "description": "這是作品一的描述。簡潔而有力，傳達核心價值。"
     },
     {
       "image": "https://picsum.photos/id/1025/600/400",
       "title": "作品二",
-      "description": "這是作品二的描述。"
+      "description": "這是作品二的描述，呈現設計的精緻與細膩。"
     },
     {
       "image": "https://picsum.photos/id/1035/600/400",
       "title": "作品三",
-      "description": "這是作品三的描述。"
+      "description": "作品三展示了創意與技術的完美結合。"
     },
     {
       "image": "https://picsum.photos/id/1045/600/400",
       "title": "作品四",
-      "description": "這是作品四的描述。"
+      "description": "作品四展現了細膩的手工與深厚的美學基礎。"
     }
   ]
   </script>
@@ -42,23 +85,21 @@
   <script>
     function renderPortfolio(items) {
       const container = document.getElementById('portfolio');
-      container.innerHTML = ''; // 先清空容器
+      container.innerHTML = '';
       items.forEach(item => {
-        const card = document.createElement('div');
+        const card = document.createElement('article');
+        card.className = 'card overflow-hidden';
         card.innerHTML = `
-          <div class="rounded-2xl shadow-md overflow-hidden bg-white">
-            <img src="${item.image}" alt="${item.title}" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'">
-          </div>
-          <div class="mt-2 px-2">
-            <h2 class="text-xl font-semibold mb-1">${item.title}</h2>
-            <p class="text-gray-600 text-sm">${item.description}</p>
+          <img src="${item.image}" alt="${item.title}" class="w-full h-56 object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=No+Image'" />
+          <div class="p-6">
+            <h2>${item.title}</h2>
+            <p>${item.description}</p>
           </div>
         `;
         container.appendChild(card);
       });
     }
 
-    // 從 script#data-json 讀取 JSON 並渲染
     const dataScript = document.getElementById('data-json');
     const portfolioData = JSON.parse(dataScript.textContent);
     renderPortfolio(portfolioData);
