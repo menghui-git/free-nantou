@@ -1,54 +1,48 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>問答集</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-WAqDMTa0ZFLCRBW1kSoPzGSL1Oa7VxryJd/IF3FZcMB9M4/OG0r5QUyIQcgXfZ3KfTByY2X+8L0yQm0HKbNjTw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
-<body class="bg-gray-50 text-gray-800">
-
+<body class="bg-gray-50">
   <div class="p-4">
     <h1 class="text-3xl font-bold mb-6 text-center">問答集</h1>
     <div id="portfolio" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </div>
-
+  
   <script>
-    async function fetchPortfolio() {
-      const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRoF1FRTjxt9v94kErMf61uobGZ2RXxvNiMKoRMYHFLb7URJa9KbtU5nWH4iTNYjdd3iLd67UcsDjJj/pub?output=csv";
-      const res = await fetch(url);
-      const csvText = await res.text();
-      console.log(\"Raw CSV:\", csvText);
+    async function fetchData() {
+      const res = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRoF1FRTjxt9v94kErMf61uobGZ2RXxvNiMKoRMYHFLb7URJa9KbtU5nWH4iTNYjdd3iLd67UcsDjJj/pub?output=csv");
+      const text = await res.text();
+      console.log("Raw CSV text:", text);
 
-      Papa.parse(csvText, {
+      Papa.parse(text, {
         header: true,
         skipEmptyLines: true,
         complete: function(results) {
-          console.log(\"Parsed Data:\", results.data);
-          renderPortfolio(results.data);
+          console.log("Parsed result:", results.data);
+          const container = document.getElementById("portfolio");
+          results.data.forEach((item, index) => {
+            const card = document.createElement("div");
+            card.innerHTML = `
+              <div class="rounded-2xl shadow-md overflow-hidden bg-white">
+                <img src="${item.image}" alt="${item.title}" class="w-full h-48 object-cover" />
+              </div>
+              <div class="mt-2">
+                <h2 class="text-xl font-semibold mb-1">${item.title}</h2>
+                <p class="text-gray-600 text-sm">${item.description}</p>
+              </div>
+            `;
+            container.appendChild(card);
+          });
         }
       });
     }
 
-    function renderPortfolio(data) {
-      const container = document.getElementById('portfolio');
-      data.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.innerHTML = `
-          <div class="rounded-2xl shadow-md overflow-hidden bg-white">
-            <img src=\"${item.image}\" alt=\"${item.title}\" class="w-full h-48 object-cover" onerror=\"this.src='https://via.placeholder.com/300x200?text=No+Image'\">
-          </div>
-          <div class="mt-2">
-            <h2 class="text-xl font-semibold mb-1">${item.title}</h2>
-            <p class="text-gray-600 text-sm">${item.description}</p>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    fetchPortfolio();
+    fetchData();
   </script>
 </body>
 </html>
