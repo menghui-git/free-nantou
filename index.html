@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mindblown Blog</title>
+<title>議題問答集</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   /* 背景漸層 */
@@ -88,7 +88,7 @@
 <body>
   <header class="flex justify-between max-w-7xl mx-auto px-6 py-6 items-center nav">
     <nav class="flex flex-row w-full justify-between max-w-7xl mx-auto px-6">
-      <div class="left-nav nav">TWENTY TWENTY THREE</div>
+      <div class="left-nav nav">議題問答集</div>
       <div class="right-nav nav flex">
         <a href="#">PHILOSOPHY</a>
         <a href="#">ABOUT</a>
@@ -96,36 +96,31 @@
     </nav>
   </header>
 
-  <main>
-    <h1 class="text-center">Mindblown: a blog about philosophy.</h1>
-    <section id="portfolio" class="mx-auto px-6"></section>
-  </main>
-
   <script id="data-json" type="application/json">
   [
     {
-      "image": "https://picsum.photos/id/1015/600/400",
-      "title": "THE HUMAN CONDITION BY HANNAH ARENDT",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL8xbrZrlT_bpxwxtSzPTwYsus0FdtyIPXgQ&s",
+      "title": "游顥不倒，健保會倒",
       "description": "How “human activities” should be and have been understood throughout Western history.",
-      "date": "OCT 19, 2022"
+      "tags": []
     },
     {
-      "image": "https://picsum.photos/id/1025/600/400",
-      "title": "NICOMACHEAN ETHICS BY ARISTOTLE",
-      "description": "Aristotle’s take on ethics and the science of the good for human life.",
-      "date": "OCT 19, 2022"
+      "image": "https://www.google.com/imgres?q=%E5%B7%B4%E6%B0%8F%E9%87%8F%E8%A1%A8&imgurl=https%3A%2F%2Fi.ytimg.com%2Fvi%2Ft6tWOl95UK0%2Fmaxresdefault.jpg&imgrefurl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dt6tWOl95UK0&docid=SZLcTwZP_NxuTM&tbnid=H3I4agD2-wXd6M&vet=12ahUKEwivqtW6z-eOAxUhQPUHHRt_JHEQM3oECCcQAA..i&w=1280&h=720&hcb=2&ved=2ahUKEwivqtW6z-eOAxUhQPUHHRt_JHEQM3oECCcQAA",
+      "title": "免巴氏量表，讓你請不到看護",
+      "description": "",
+      "tags": []
     },
     {
       "image": "https://picsum.photos/id/1035/600/400",
-      "title": "TAO TE CHING (DAODEJING) BY LAO TZU",
+      "title": "治水又淹水，不如拿來普發",
       "description": "A fundamental text for both philosophical and religious Taoism.",
-      "date": "OCT 19, 2022"
+      "tags": ["nantou"]
     },
     {
       "image": "https://picsum.photos/id/1045/600/400",
-      "title": "PHILOSOPHY OF MIND",
+      "title": "垃圾問題：選前打包票，選後做不到",
       "description": "Exploration of the relationship between mind and matter.",
-      "date": "OCT 19, 2022"
+      "tags": []
     }
   ]
   </script>
@@ -141,7 +136,6 @@
         <img src="${item.image}" alt="${item.title}" />
         <h2>${item.title}</h2>
         <p class="description">${item.description}</p>
-        <time>${item.date}</time>
       `;
       container.appendChild(article);
     });
