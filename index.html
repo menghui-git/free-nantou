@@ -35,4 +35,116 @@
     font-weight: 700;
     font-size: 1.875rem; /* 30px */
     margin: 1.5rem 0;
-    max-width: 720
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* 文章列表區 */
+  #portfolio {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* 文章卡 */
+  article {
+    max-width: 320px;
+  }
+  article img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+  }
+  article h2 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.3rem;
+    line-height: 1.2;
+  }
+  article p.description {
+    font-weight: 400;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  article time {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #444;
+  }
+  /* 響應式三欄 */
+  @media (min-width: 768px) {
+    #portfolio {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    article {
+      flex: 1 1 calc(33% - 2rem);
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="flex justify-between max-w-7xl mx-auto px-6 py-6 items-center nav">
+    <nav class="flex flex-row w-full justify-between max-w-7xl mx-auto px-6">
+      <div class="left-nav nav">TWENTY TWENTY THREE</div>
+      <div class="right-nav nav flex">
+        <a href="#">PHILOSOPHY</a>
+        <a href="#">ABOUT</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="text-center">Mindblown: a blog about philosophy.</h1>
+    <section id="portfolio" class="mx-auto px-6"></section>
+  </main>
+
+  <script id="data-json" type="application/json">
+  [
+    {
+      "image": "https://picsum.photos/id/1015/600/400",
+      "title": "THE HUMAN CONDITION BY HANNAH ARENDT",
+      "description": "How “human activities” should be and have been understood throughout Western history.",
+      "date": "OCT 19, 2022"
+    },
+    {
+      "image": "https://picsum.photos/id/1025/600/400",
+      "title": "NICOMACHEAN ETHICS BY ARISTOTLE",
+      "description": "Aristotle’s take on ethics and the science of the good for human life.",
+      "date": "OCT 19, 2022"
+    },
+    {
+      "image": "https://picsum.photos/id/1035/600/400",
+      "title": "TAO TE CHING (DAODEJING) BY LAO TZU",
+      "description": "A fundamental text for both philosophical and religious Taoism.",
+      "date": "OCT 19, 2022"
+    },
+    {
+      "image": "https://picsum.photos/id/1045/600/400",
+      "title": "PHILOSOPHY OF MIND",
+      "description": "Exploration of the relationship between mind and matter.",
+      "date": "OCT 19, 2022"
+    }
+  ]
+  </script>
+
+  <script>
+    const dataScript = document.getElementById('data-json');
+    const portfolioData = JSON.parse(dataScript.textContent);
+    const container = document.getElementById('portfolio');
+
+    portfolioData.forEach(item => {
+      const article = document.createElement('article');
+      article.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" />
+        <h2>${item.title}</h2>
+        <p class="description">${item.description}</p>
+        <time>${item.date}</time>
+      `;
+      container.appendChild(article);
+    });
+  </script>
+</body>
+</html>
