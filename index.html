@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mindblown Blog</title>
+<title>南投議題問答集</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   /* 背景漸層 */
@@ -49,27 +49,45 @@
   article {
     max-width: 320px;
   }
-  article img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-  }
   article h2 {
     font-weight: 700;
     font-size: 1.25rem;
     margin-top: 0.5rem;
     margin-bottom: 0.3rem;
     line-height: 1.2;
+    text-align: center;
   }
-  article p.description {
+  [id^="imgControl-"] {
+    display: none;
+  }
+  [id^="imgControl-"]:checked + label > img {
+    opacity: 0%;
+  }
+  article label {
+    position: relative;
+    max-width: 320px;
+  }
+  article img {
+    width: 100%;
+    height: 320px;
+    object-fit: fill;
+    opacity: 100%;
+  }
+  /* article p {
+    width: 100%;
+  } */
+  article div.description {
+    max-width: 320px;
+    min-width: 220px;
+    height: 320px;
     font-weight: 400;
     font-size: 0.875rem;
     margin-bottom: 0.5rem;
-  }
-  article time {
-    font-weight: 400;
-    font-size: 0.75rem;
-    color: #444;
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
   }
   /* 響應式三欄 */
   @media (min-width: 768px) {
@@ -97,27 +115,29 @@
   </header>
 
   <main>
-    <h1 class="text-center">Mindblown: a blog about philosophy.</h1>
+    <h1 class="text-center">❤️一起關心自身權益❤️</h1>
+    <h2 class="text-center">(點擊👆圖卡看摘要)</h2>
+    <br>
     <section id="portfolio" class="mx-auto px-6"></section>
   </main>
 
   <script id="data-json" type="application/json">
   [
     {
-      "image": "https://picsum.photos/id/1015/600/400",
+      "image": "https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/526604305_122138696822743461_778651378620685098_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=OvQsaWXj72IQ7kNvwF8Uvjf&_nc_oc=Admqlh7pYEwDMcd6WRk29BJOqNHlE2glPQgwtSBEDrbq26yEQWywpCVNpkpf5sfwsoo&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=0CJguSP6uEdU7TY7kW7m9Q&oh=00_AfTmL58KRhrkX5PsXw3qJaDEA-WHOTRRyfOhtlJDqoUmMw&oe=68929412",
       "title": "游顥不倒，健保會倒",
       "description": "How “human activities” should be and have been understood throughout Western history.",
       "tag": []
     },
     {
-      "image": "https://picsum.photos/id/1025/600/400",
-      "title": "NICOMACHEAN ETHICS BY ARISTOTLE",
+      "image": "https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/519592085_122137122614743461_179117916265336160_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=b5aDqrr-IeMQ7kNvwFnFw6l&_nc_oc=AdlLrWNFwHfhxEtT3l0BYSTTKUaLgvpelIU1kMwI7DrDKpTJKiMolUal39eHy5nTiv4&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=1ciRYi15OcMewkh7omfeKQ&oh=00_AfQcYAPHgrl1vnObYjooI-VgP4BaoMifOUjZEPDR9uPmCA&oe=6892BAA2",
+      "title": "免巴氏量表，讓你請不到看護",
       "description": "Aristotle’s take on ethics and the science of the good for human life.",
       "tag": []
     },
     {
-      "image": "https://picsum.photos/id/1035/600/400",
-      "title": "TAO TE CHING (DAODEJING) BY LAO TZU",
+      "image": "https://scontent-tpe1-1.xx.fbcdn.net/v/t39.30808-6/525337435_122138726312743461_8341910078561130904_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=B9YhaHLSU_IQ7kNvwFvtTe3&_nc_oc=Adk670pnGQP46dwlkOpMsfUX7fhPsaduTDBPHgRJ1qhE6Rrm6Ns2XPbwhJq_8NC5op4&_nc_zt=23&_nc_ht=scontent-tpe1-1.xx&_nc_gid=BJWEgTsbTWP6bpf2EcWrKw&oh=00_AfRBfAzcCCTW0ZkvbJEt_XM4WGiYarOOypUBvdRZYIAOyQ&oe=6892AE06",
+      "title": "治水又淹水，不如拿來普發",
       "description": "A fundamental text for both philosophical and religious Taoism.",
       "tag": []
     },
@@ -135,12 +155,16 @@
     const portfolioData = JSON.parse(dataScript.textContent);
     const container = document.getElementById('portfolio');
 
-    portfolioData.forEach(item => {
+    portfolioData.forEach((item, index) => {
       const article = document.createElement('article');
       article.innerHTML = `
-        <img src="${item.image}" alt="${item.title}" />
         <h2>${item.title}</h2>
-        <p class="description">${item.description}</p>
+        <input type="checkbox" id="imgControl-${index}"/>
+        <label for="imgControl-${index}">
+            <img src="${item.image}" alt="${item.title}" />
+            <div class="description">${item.description}</div>
+        </label>
+        <br>
       `;
       container.appendChild(article);
     });
