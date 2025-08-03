@@ -74,9 +74,9 @@
     opacity: 100%;
   }
   article div.description {
-/*     max-width: 320px;
+    max-width: 320px;
     min-width: 220px;
-    height: 320px; */
+    height: 320px;
     font-weight: 400;
     font-size: 0.875rem;
     margin-bottom: 0.5rem;
@@ -158,8 +158,8 @@
         <h2>${item.title}</h2>
         <input type="checkbox" id="imgControl-${index}"/>
         <label for="imgControl-${index}">
-            <img src="${item.image}" alt="${item.title}" />
             <div class="description">${item.description}</div>
+            <img src="${item.image}" alt="${item.title}" />
         </label>
         <br>
       `;
