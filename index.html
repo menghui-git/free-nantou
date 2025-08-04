@@ -52,7 +52,7 @@
   }
   /* 文章卡 */
   article {
-    max-width: 320px;
+    max-width: 330px;
   }
   article h2 {
     font-weight: 700;
@@ -71,25 +71,25 @@
   }
   article label {
     position: relative;
-    max-width: 320px;
-    height: 280px;
+    max-width: 330px;
+    height: 290px;
     display: block;
   }
   article img {
     width: 100%;
-    height: 280px;
+    height: 290px;
     border-radius: 0.5rem;
     object-fit: fill;
     /* opacity: 100%; */
     display: block;
   }
   article div.description {
-    height: 280px;
+    height: 290px;
     font-weight: 400;
     /* font-size: 0.875rem; */
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
-
+    color: #333;
     position: absolute;
     left: 0px;
     top: 0px;
@@ -121,7 +121,8 @@
   </header>
 
   <main>
-    <h2 class="text-center title">❤️關心南投權益❤️</h2>
+    <h2 class="text-center title">為什麼不能給游顥做4年？</h2>
+    <div class="text-center">↓↓7大重點報您知↓↓</div>
     <div class="text-center">(點圖卡👆看更多)</div>
     <br>
     <section id="portfolio" class="mx-auto px-6"></section>
@@ -143,7 +144,7 @@
     },
     {
       "image": "https://scontent.ftpe7-1.fna.fbcdn.net/v/t39.30808-6/526529751_122138726306743461_1950387385896889691_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=URgbWui1bccQ7kNvwFjxMH9&_nc_oc=AdlSmVybLeETA4iz1ZKhEYT0ryPGr0UNryV3oEEu0n9gyOllbe58a3iEpQGLX_BfzY4&_nc_zt=23&_nc_ht=scontent.ftpe7-1.fna&_nc_gid=DtXjR9Clc2jKibgI9luVmA&oh=00_AfRyxLsxvSVWd0JBLVelbMz7-YIO_YH6Quez1ZjCWqg4-g&oe=68954FD7",
-      "title": "治水又淹水，不如拿來普發",
+      "title": "治水又淹水，不如發錢",
       "description": "去年9月南投作大水<br>當時說爭取12億治水<br><br>今年7月又淹水<br>錢錢去哪裡？",
       "tag": []
     },
@@ -156,13 +157,13 @@
     {
       "image": "citizenship.png",
       "title": "中配拿身份證年限：6->4",
-      "description": "🧐其他外配拿身分證<br>&emsp;要考試、要放棄國籍<br>&emsp;中配都不用、還能更快拿到<br>&emsp;公平性在哪？<br>🧐其他外配家屬不能用健保<br>&emsp;公平性在哪？<br>😵更多人用健保<br>&emsp;健保更快倒<br>",
+      "description": "🧐中配申請身分證<br>&emsp;不像其他外配一堆條件<br>&emsp;還更快拿到<br>&emsp;公平性在哪？<br>😡其他外配家屬沒健保<br>&emsp;公平性在哪？<br>😵更多人用，健保更快倒<br>",
       "tag": []
     },
     {
       "image": "reneged_policies.jpg",
       "title": "選前大包票、選後大跳票",
-      "description": "😡茶葉賣去中國，還沒收到錢<br>&emsp;茶農權益在哪裡？<br>😵南投人回家還是很困難<br>&emsp;交通建設在哪裡？<br>😡凍結幼兒預算<br>&emsp;助長少子化<br>😥南投青年的工作在哪裡？<br>😵觀光推動計畫在哪裡？",
+      "description": "上任一年半：<br>😡茶葉賣中國，錢沒收到<br>&emsp;還要繼續賣？<br>😵南投人回家的路在哪？<br>😡為什麼凍結幼兒預算？<br>😥年輕人的工作在哪裡？<br>😵觀光推動計畫在哪裡？",
       "tag": []
     },
     {
@@ -182,7 +183,7 @@
     portfolioData.forEach((item, index) => {
       const article = document.createElement('article');
       article.innerHTML = `
-        <h2>${item.title}</h2>
+        <h2>${index+1}. ${item.title}</h2>
         <input type="checkbox" id="imgControl-${index}"/>
         <label for="imgControl-${index}">
             <div class="description">${item.description}</div>
