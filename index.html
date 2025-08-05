@@ -13,7 +13,7 @@
   }
   /* 小字母選單 */
   nav {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
@@ -43,9 +43,9 @@
   }
   @keyframes head {
     0% {opacity: 1;}
-    25% {opacity: 0;}
+    25% {opacity: 0;content: ""}
     50% {opacity: 1; content: "罷免投票"}
-    75% {opacity: 0;}
+    75% {opacity: 0;content: ""}
     100% {opacity: 1; content: "8/23(六)"}
   }
   .title {
@@ -69,7 +69,7 @@
     margin-right: auto;
   }
   article {
-    max-width: 330px;
+    max-width: 350px;
   }
   article h2 {
     font-weight: 700;
@@ -88,12 +88,9 @@
   [id^="imgControl-"]:checked + label > .description {
     display: block;
   }
-  /* [id^="imgControl-"]:not(:checked) + label > .description {
-    z-index: -1;
-  } */
   article label {
     position: relative;
-    max-width: 330px;
+    max-width: 350px;
     height: 290px;
     display: block;
   }
@@ -117,8 +114,9 @@
     display: none;
   }
   article a {
-    color: #9c6d5b;
-    text-decoration: underline;
+    color: #f96400;
+    text-decoration:dotted underline;
+    font-weight: 600;
   }
   @media (min-width: 768px) {
     #portfolio {
@@ -136,7 +134,7 @@
 <body>
   <header class="flex justify-between max-w-7xl mx-auto px-6 py-6 items-center nav">
     <nav class="flex flex-row w-full justify-between max-w-7xl mx-auto px-6">
-      <div class="left-nav nav"><img class="icon" src="https://scontent.ftpe7-3.fna.fbcdn.net/v/t39.30808-6/476903301_122107235948743461_1322357270908771741_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=OE0rl_xckDQQ7kNvwEwK9N4&_nc_oc=AdnQ62yNdvw3_pX_20nBnp7KourbEepn2R-CVl_N9kDvXqAJawKhbyrPP9QpahTnqwc&_nc_zt=23&_nc_ht=scontent.ftpe7-3.fna&_nc_gid=SSYCYqDUgH2Napll0ARTWg&oh=00_AfQOhSH3AZqWQ7mvqX9lW-TudjdTFqb_pN8nqDQ9Oinz3w&oe=6894DCDF" alt="" /></div>
+      <div class="left-nav nav"><img class="icon" src="icon.jpg" alt="" /></div>
       <div class="right-nav nav flex">
         <!-- <a href="#">PHILOSOPHY</a> -->
         <a class="info" href="#"></a>
