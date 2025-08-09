@@ -8,7 +8,7 @@
 <style>
   body {
     /* background: linear-gradient(0deg, #fddde6 0%, #ffffcc 100%); */
-    background: linear-gradient(0deg, #ffffff 0%, #fddde6 100%);
+    background: linear-gradient(0deg, #ffffff 0%, #ffffcc 100%);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   }
   nav {
@@ -34,21 +34,27 @@
     height: 50px;
     border-radius: 50%;
   }
+  .fb {
+    width: 25px;
+    height: 25px;
+    display: inline;
+  }
   .vote {
+    /* max-width: 350px; */
     width: 100%;
     height: 200px;
     aspect-ratio: 1;
   }
   .info:before {
     content: '8/23(六)';
-    animation-name: head;
+    animation-name: info;
     animation-duration: 4s;
     animation-iteration-count: infinite;
   }
-  @keyframes head {
-    0% {opacity: 1;}
+  @keyframes info {
+    0% {opacity: 1; content: "8/23(六)"}
     25% {opacity: 0;content: ""}
-    50% {opacity: 1; content: "罷免投票"}
+    50% {opacity: 1; content: "投票爭取福利"}
     75% {opacity: 0;content: ""}
     100% {opacity: 1; content: "8/23(六)"}
   }
@@ -132,6 +138,15 @@
       flex: 1 1 calc(33% - 2rem);
     }
   }
+  footer {
+    max-width: 350px;
+    margin-inline: auto;
+  }
+  .extra-info {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 600;
+  }
 </style>
 </head>
 <body>
@@ -139,7 +154,6 @@
     <nav class="flex flex-row w-full justify-between max-w-7xl mx-auto px-6">
       <div class="left-nav nav"><img class="icon" src="icon.jpg" alt="" /></div>
       <div class="right-nav nav flex">
-        <!-- <a href="#">PHILOSOPHY</a> -->
         <a class="info" href="#"></a>
       </div>
     </nav>
@@ -147,60 +161,61 @@
 
   <main>
     <h2 class="text-center title">為什麼不能給游顥做4年？</h2>
-    <div class="text-center sub-title">↓↓&nbsp;7重點報您知&nbsp;↓↓</div>
+    <div class="text-center sub-title">↓↓&nbsp;5點報您知&nbsp;↓↓</div>
     <div class="text-center sub-title">(點圖卡👆看更多)</div>
     <br>
     <section id="portfolio" class="mx-auto px-6"></section>
+    
+  </main>
+
+  <footer class="">
     <h2 class="text-center sub-title">--</h2>
-    <h2 class="text-center sub-title">人民是頭家、立委是公僕</h2>
-    <h2 class="text-center sub-title">員工不合格、解雇止損要快</h2>
+    <h2 class="text-center sub-title">公僕不合格、止損換人要快</h2>
+    <h2 class="text-center sub-title">無論黨籍，南投人值得更好的立委</h2>
+    <h2 class="text-center sub-title">認真解決南投問題！</h2>
+    <br>
     <h2 class="text-center sub-title">若您不滿意游顥表現</h2>
     <h2 class="text-center sub-title"><p class="hightlight">8/23(六)</p> 請投<p class="hightlight">同意</p>罷免</h2>
+    <br>
+    <br>
+    <div class="extra-info">
+      <a href="https://www.facebook.com/profile.php?id=61572303830032" target="_blank"><img class="fb" src="fb.png" alt="" />&nbsp;追蹤我們</a>
+      <div class="text-center" onclick="copyLink()" >🔗&nbsp;複製網站連結</div>
+    </div>
+    <br>
     <img class="vote" src="vote.PNG" alt="" />
-  </main>
+  </footer>
 
   <script id="data-json" type="application/json">
   [
     {
-      "image": "public_insureance.png",
-      "title": "游顥不倒，健保會倒",
-      "description": "😵讓中配更容易入籍，更多中國人能依親用健保，看病等更久，健保可能漲價、更早倒 (<a href='https://today.line.me/tw/v3/article/LX3qKMz'>看報導</a>)<br>😵提65歲以上免健保政見，健保加速破產，大家都沒得用",
+      "image": "public_insurance.png",
+      "title": "擴大健保漏洞，加速破產",
+      "description": "😵開放更多中配拿身分證，更多中國親屬用健保(<a href='https://today.line.me/tw/v3/article/LX3qKMz'>新聞</a>)<br>😵65歲以上免健保費政見，讓健保加速倒<br>✅同意罷免，換掉用政策買票、讓全民受害的立委",
       "tag": []
     },
     {
-      "image": "https://scontent.ftpe7-3.fna.fbcdn.net/v/t39.30808-6/520311927_122137122644743461_6133184358094843185_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=lIuWV5yWO4sQ7kNvwEtykmB&_nc_oc=AdnZG5Nd8-HE7udHDzRxgKhH1kN31CftaSNWoOIVe46GxqAjrApUMB1xcoykO0NttYk&_nc_zt=23&_nc_ht=scontent.ftpe7-3.fna&_nc_gid=FmCEMS6T0p9zddSg7Afb2Q&oh=00_AfRAu_3p6WZt7LU1floy4IIFRfjtfa3R7rVpe1PTPQUhGg&oe=6895574A",
-      "title": "免巴氏量表，請不到看護",
-      "description": "😵看護已不足，把申請標準放寬，更多人能申請，重症者更難找到看護<br>😵供給若不足，費用恐提高，加重長照家庭負擔<br>►看&nbsp;<a href='https://news.pts.org.tw/article/762840'>社福團體說法</a>、<a href='https://udn.com/news/story/7266/8903212'>勞動部說明</a>、<a href='https://vip.udn.com/vip/story/122366/8916848'>聯合報報導</a>",
+      "image": "caregiver.jpg",
+      "title": "放寬申請，重症沒看護",
+      "description": "😵免巴氏量表放寬申請標準，重症者更難找到看護<br>😵看護更不足，費用恐提高<br>✅同意罷免，換人妥善處理長照問題<br>►看&nbsp;<a href='https://news.pts.org.tw/article/762840'>社福團體說法</a>、<a href='https://udn.com/news/story/7266/8903212'>勞動部說明</a>、<a href='https://vip.udn.com/vip/story/122366/8916848'>聯合報新聞</a>",
       "tag": []
     },
     {
-      "image": "https://scontent.ftpe7-1.fna.fbcdn.net/v/t39.30808-6/526529751_122138726306743461_1950387385896889691_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=URgbWui1bccQ7kNvwFjxMH9&_nc_oc=AdlSmVybLeETA4iz1ZKhEYT0ryPGr0UNryV3oEEu0n9gyOllbe58a3iEpQGLX_BfzY4&_nc_zt=23&_nc_ht=scontent.ftpe7-1.fna&_nc_gid=DtXjR9Clc2jKibgI9luVmA&oh=00_AfRyxLsxvSVWd0JBLVelbMz7-YIO_YH6Quez1ZjCWqg4-g&oe=68954FD7",
-      "title": "治水又淹水，還敢刪預算？",
-      "description": "😵選前南投就淹水，立委當1年半，配合民眾黨刪預算，影響防洪計畫<br>😵結果7月又淹水(<a href='https://www.ettoday.net/news/20250709/2993330.htm'>新聞</a>)，12億治水工程在哪裡？",
+      "image": "flood.jpg",
+      "title": "南投年年淹，還刪水預算",
+      "description": "😵立委1年半，治水12億沒進度，年年淹水(<a href='https://www.ettoday.net/news/20250709/2993330.htm'>新聞</a>)<br>😡還配合刪預算，影響防洪工程<br>✅同意罷免，換人處理南投水災",
       "tag": []
     },
     {
-      "image": "https://scontent.ftpe7-4.fna.fbcdn.net/v/t39.30808-6/498843535_122126186690743461_8316220864674132945_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=lBMxxwyMRaEQ7kNvwFW0Z39&_nc_oc=AdkIaNIPthbgwid26mBlrqeI6cFcfyyPKBEf6F6sfkDsEZ5UIIPRhU187ygcdEr7oMM&_nc_zt=23&_nc_ht=scontent.ftpe7-4.fna&_nc_gid=LYKxHEBstS32MkSvjkvd-A&oh=00_AfQfb2IlOqr2kvPLckduF0noUAK7aYLho4NM6iciRLCzzQ&oe=6895463F",
-      "title": "垃圾問題，跳票又敷衍",
-      "description": "😵上任1年半，竹山垃圾只有打包處理，其它鄉鎮垃圾沒規劃解決<br>😵名間焚化爐毀茶農生計，也可能影響健康和地價，游顥為何裝沒看見？是要把垃圾丟在票最少的地方？",
+      "image": "trash.jpg",
+      "title": "垃圾政策跳票，名間人受害",
+      "description": "😵上任1年半，竹山垃圾只有打包處理，其它鄉鎮垃圾沒規劃<br>😵名間焚化爐毀茶田，也可能影響健康和地價，游顥沒聽見名間人的聲音？<br>✅同意罷免，換人解決垃圾問題",
       "tag": []
     },
     {
       "image": "citizenship.png",
-      "title": "中配拿身份，6年改4年",
-      "description": "🧐中配申請身分證，已經少一堆流程和條件，親屬還能享用健保(<a href='https://news.pts.org.tw/article/733781'>公視報導</a>)<br>😡游顥只縮短中配申請身份年限，哪裡公平？<br>😵更多中配家屬能用健保，健保更快倒",
-      "tag": []
-    },
-    {
-      "image": "reneged_policies.jpg",
-      "title": "選前大包票、選後大跳票",
-      "description": "上任一年半：<br>😡茶葉賣中國沒收到錢<br>&emsp;還要繼續賣？<br>😵南投人回家的路在哪？<br>😡為什麼凍結幼兒預算？<br>😥年輕人的工作在哪裡？<br>😵觀光推動在哪裡？",
-      "tag": []
-    },
-    {
-      "image": "penghu.jpg",
-      "title": "選上南投立委，馬上去澎湖",
-      "description": "😡選後政見還沒做，垃圾、交通、就業問題還沒解，馬上就去澎湖設服務處(<a href='https://today.line.me/tw/v3/article/PG1Lj8V'>新聞</a>)",
+      "title": "加速中配入籍，影響資源分配",
+      "description": "🧐中配福利已優於其他外配，還能依親半年用健保<br>😡游顥只讓中配更好入籍，及用福利、拿選票(<a href='https://news.pts.org.tw/article/733781'>公視報導</a>)<br>✅同意罷免，讓所有新住民享同等福利",
       "tag": []
     }
   ]
@@ -224,6 +239,14 @@
       `;
       container.appendChild(article);
     });
+
+    function copyLink() {
+      // Get the text field
+      var copyText = "為什麼不能給游顥做4年？5點報您知！\nhttps://bhpydev.github.io/";
+
+      // Copy the text inside the text field
+      navigator.clipboard.writeText(copyText);
+    }
   </script>
 </body>
 </html>
